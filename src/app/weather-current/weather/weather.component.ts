@@ -1,4 +1,6 @@
+import { WeatherService } from './../weather.service';
 import { Component, OnInit } from '@angular/core';
+import { WeatherModel } from '../model/WeatherModel';
 
 @Component({
   selector: 'app-weather',
@@ -6,10 +8,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./weather.component.sass']
 })
 export class WeatherComponent implements OnInit {
+ 
+ 
+  
+  weatherModel:WeatherModel;
 
-  constructor() { }
+  city:string ="London,uk";
 
-  ngOnInit() {
+
+
+  constructor(private _weatherService :WeatherService) {
+    
+  }
+  
+  ngOnInit(){
+    
+  }
+
+   searchCurrentWeather() {
+    this._weatherService.searchWeather(this.city)
+        .subscribe(response => this.weatherModel = response,
+        error => this.setError());
+  }
+  setError(){
+    this.weatherModel = null;
   }
 
 }

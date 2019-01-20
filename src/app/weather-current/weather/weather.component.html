@@ -1,3 +1,52 @@
-<p>
-  weather works!
-</p>
+<div class="container">
+      <div class="">
+        <h1>Search for the current weather conditions</h1>
+      </div>
+      <div class="row">
+        <label>Name of a city</label>
+      </div>
+      <div class="row">
+        <input  [(ngModel)]='city' type="text" size="20" maxlength="20"/>
+        
+        <input value="search" class="" type="submit" (click)='searchCurrentWeather()' />   
+      </div>
+      <div class="weather-information" *ngIf="weatherModel">
+        <table class="table-information">
+          <tbody>
+            <tr>
+                <td>Name City</td>
+                <td>{{ weatherModel.name }}</td>
+            </tr>
+            <tr>
+              <td>Id</td>
+              <td>{{ weatherModel.id }}</td>
+            </tr>
+            <tr>
+                <td>Base</td>
+                <td>{{ weatherModel.base }}</td>
+            </tr>
+            <tr>
+              <td>Temperature</td>
+              <td>{{ weatherModel.main.temp }}</td>
+            </tr>
+            <tr>
+              <td>Pressure</td>
+              <td>{{ weatherModel.main.pressure }}</td>
+            </tr>
+            <tr>
+              <td>Humidity</td>
+              <td>{{ weatherModel.main.humidity }}</td>
+            </tr>
+            <tr>
+              <td>Temperature min</td>
+              <td>{{ weatherModel.main.temp_min }}</td>
+            </tr>
+            <tr>
+              <td>Temperature max</td>
+              <td>{{ weatherModel.main.temp_max }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+</div>
